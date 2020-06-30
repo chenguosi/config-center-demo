@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: custom-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: app_web
+          uri: lb://demo-app
+          predicates:
+            - Path=/app/**
+
+        - id: admin-web
+          uri: lb://demo-admin
+          predicates:
+            -Path=/admin/**
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8001/eureka
