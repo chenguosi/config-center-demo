@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: demo-admin
+eureka:
+  client:
+    register-with-eureka: true  #表示是否将自己注册进eurekaServer
+    fetch-registry: true  #是否从EurekaServer抓取已有的注册信息
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+  instance:
+    prefer-ip-address: true
